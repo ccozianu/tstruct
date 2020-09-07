@@ -91,3 +91,28 @@ describe("Heap tests", () => {
         
     })
 });
+
+/* Example of how heap typically accepts anything, with undefined results
+
+describe ("Heap typing ",() => {
+    // This test shows that defaulting to out of the box < comparison is meaningless
+    // because in Typescript generated code , types like record types
+    // have generated meaningless < , "=="
+    it ("Fails to instantiate for types without a valid comparison", () => {
+        type x= { a:number , b:string};
+        let testHeap = new MinHeap<x>();
+        testHeap.add( {a:1,b:"ok"});
+        testHeap.add( {a:-1,b:"not ok"})
+        testHeap.add({a:2, b:"xyz"});
+        testHeap.add({a:1,b:"abc"});
+        testHeap.add({a:1, b:"xyz"});
+        console.log('really testing');
+        {
+            console.log('really really testing');
+            let first = testHeap.extractRoot();
+            expect ({x:-1,z:"abc"} == {x:-1, z:"abc"}).toBeTruthy()
+            //expect(first).toStrictEqual({ a:-1, b:"not ok"});
+        }
+    });
+});
+*/
